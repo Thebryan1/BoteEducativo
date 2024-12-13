@@ -22,7 +22,7 @@ body {
   color: #fff;
   padding: 20px;
   text-align: center;
-  font-size: 1.8rem; /* Tamaño más grande para mejor visibilidad */
+  font-size: 2.2rem; /* Tamaño más grande para mejor visibilidad */
   font-weight: bold;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -127,7 +127,7 @@ body {
   }
 
   .chat-header {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     padding: 15px;
   }
 
@@ -137,5 +137,20 @@ body {
 
   .chat-window {
     max-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-header {
+    font-size: 1.5rem;
+  }
+
+  #chat-input {
+    width: calc(100% - 70px);
+  }
+
+  #send-button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
   }
 }
