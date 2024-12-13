@@ -3,18 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chatbot Integrado</title>
+  <title>Chatbot de Matemática Aplicada</title>
+  <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-  <h1>Chatbot de Matematica aplicada</h1>
-  
-  <!-- Incrustar el chatbot en un iframe -->
-  <iframe 
-    src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/11/30/19/20241130195022-C442V9OH.json" 
-    width="100%" 
-    height="600px" 
-    style="border: none; border-radius: 10px;">
-  </iframe>
-  
+  <div class="chatbot-container">
+    <header class="chat-header">
+      Chatbot de Matemática Aplicada
+    </header>
+    
+    <div class="iframe-container">
+      <iframe 
+        src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/11/30/19/20241130195022-C442V9OH.json" 
+        width="100%" 
+        height="600px" 
+        style="border: none; border-radius: 10px;">
+      </iframe>
+    </div>
+
+    <div class="chat-window"></div>
+    <div class="chat-input-container">
+      <input type="text" id="chat-input" placeholder="Escribe un mensaje...">
+      <button id="send-button">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    const chatWindow = document.querySelector('.chat-window');
+    const chatInput = document.getElementById('chat-input');
+    const sendButton = document.getElementById('send-button');
+
+    sendButton.addEventListener('click', () => {
+      const userMessage = chatInput.value.trim();
+      if (userMessage !== '') {
+        addMessage(userMessage, 'user-message');
+        chatInput.value = '';
+        setTimeout(() => {
+          addMessage('¡Estoy aquí para ayudarte!', 'bot-message');
+        }, 1000);
+      }
+    });
+
+    function addMessage(message, className) {
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('chat-message', className);
+      messageElement.innerHTML = `<p>${message}</p>`;
+      chatWindow.appendChild(messageElement);
+      chatWindow.scrollTop = chatWindow.scrollHeight; // Scroll hacia abajo automáticamente
+    }
+  </script>
 </body>
 </html>
